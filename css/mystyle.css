@@ -1,0 +1,36 @@
+
+
+
+/* sidebar ::  */
+
+.sidebar {
+    width: 280px;
+    transition: 1s;
+}
+
+.small-sidebar{
+    width: 88px;
+}
+
+.small-sidebar .sidebar-text {
+    display: none;
+}
+
+
+.bi-lightning-charge {
+   
+    transition: 1s;
+}
+.small-sidebar .bi-lightning-charge::before {
+    content: "\F46C";
+    transform: rotateY(360deg);
+    transition: 1s;
+    margin-top: 50px;
+    margin-left: 10px;
+}
+
+
+.small-sidebar .bi-x-circle::before {
+    content: "\F134";
+    transition: 1s;
+}

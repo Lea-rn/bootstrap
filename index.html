@@ -10,7 +10,10 @@
     />
     <meta name="generator" content="Astro v5.9.2" />
     <title>Home page</title>
-    <link rel="stylesheet" href="./bootstrap-icons-1.13.1/bootstrap-icons.min.css">
+    <link
+      rel="stylesheet"
+      href="./bootstrap-icons-1.13.1/bootstrap-icons.min.css"
+    />
     <link
       rel="canonical"
       href="https://getbootstrap.com/docs/5.3/examples/sidebars/"
@@ -19,6 +22,7 @@
     <link href="./css/bootstrap.min.css" rel="stylesheet" />
     <meta name="theme-color" content="#712cf9" />
     <link href="./css/sidebars.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/mystyle.css" />
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -236,15 +240,18 @@
     <main class="d-flex flex-nowrap">
       <!-- //// sidebar ::  -->
       <div
-        class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
-        style="width: 280px"
+        class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar position-relative"
+        id="sidebarId"
       >
+      <span onclick="toggleSidebar()" style="top: 35px; right: 0px;" class="position-absolute  translate-middle p-2 fs-3  ">
+     <i class="bi bi-x-circle"></i>
+  </span>
         <a
           href="/"
           class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
         >
-      <i class="bi bi-lightning-charge fs-2 me-3"></i>
-          <span class="fs-4">Sidebar</span>
+          <i class="bi bi-lightning-charge fs-2 me-3"></i>
+          <span class="fs-4 sidebar-text">Sidebar</span>
         </a>
         <hr />
         <ul class="nav nav-pills flex-column mb-auto">
@@ -258,12 +265,10 @@
               >
                 <use xlink:href="#home"></use>
               </svg>
-              Home
+              <span class="sidebar-text">Home</span>
             </a>
           </li>
-   
-      
-      
+
           <li>
             <a href="./user/add.html" class="nav-link text-white">
               <svg
@@ -274,7 +279,7 @@
               >
                 <use xlink:href="#people-circle"></use>
               </svg>
-             Add Customers
+              <span class="sidebar-text">Add Customers</span>
             </a>
           </li>
         </ul>
@@ -293,7 +298,7 @@
               height="32"
               class="rounded-circle me-2"
             />
-            <strong>Your name</strong>
+            <strong class="sidebar-text">Your name</strong>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
             <li><a class="dropdown-item" href="#">New project...</a></li>
@@ -308,13 +313,18 @@
 
       <div class="b-example-divider b-example-vr"></div>
 
+  
+
       <div class="w-100">
         <!-- //// navbar ////  -->
         <nav class="navbar bg-body-tertiary">
           <div
             class="container-fluid justify-content-center justify-content-md-between"
           >
-            <a class="navbar-brand fs-4 fw-semibold">Your Brand</a>
+            <a class="navbar-brand fs-4 fw-semibold">
+             
+              Your Brand</a
+            >
             <form class="d-flex" role="search">
               <input
                 class="form-control me-2"
@@ -330,8 +340,11 @@
         </nav>
 
         <!-- //// navbar ////  -->
+
+        
+
         <!-- /// table ///  -->
-         
+
         <table
           style="width: 97%"
           class="table table-bordered table-striped mx-auto mt-5 text-center"
@@ -339,7 +352,7 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th  scope="col">First Name</th>
+              <th scope="col">First Name</th>
               <th scope="col">Gender</th>
               <th scope="col">Country</th>
               <th scope="col">Age</th>
@@ -356,19 +369,58 @@
               <td>test4</td>
               <td>test5</td>
               <td>
-                <a data-bs-toggle="tooltip"  data-bs-title="view page" class="btn btn-primary  btn-sm" href="./user/view.html"><i class="bi bi-eye"></i></a>
-                <a data-bs-toggle="tooltip" data-bs-title="edit page" class="btn btn-primary btn-sm" href="./user/edit.html"><i class="bi bi-pencil-fill"></i></a>
-                <button data-bs-toggle="tooltip" data-bs-title="delete user" class="btn btn-danger btn-sm" ><i class="bi bi-trash-fill"></i></button>
+                <a
+                  data-bs-toggle="tooltip"
+                  data-bs-title="view page"
+                  class="btn btn-primary btn-sm"
+                  href="./user/view.html"
+                  ><i class="bi bi-eye"></i
+                ></a>
+                <a
+                  data-bs-toggle="tooltip"
+                  data-bs-title="edit page"
+                  class="btn btn-primary btn-sm"
+                  href="./user/edit.html"
+                  ><i class="bi bi-pencil-fill"></i
+                ></a>
+                <button
+                  data-bs-toggle="tooltip"
+                  data-bs-title="delete user"
+                  class="btn btn-danger btn-sm"
+                >
+                  <i class="bi bi-trash-fill"></i>
+                </button>
               </td>
             </tr>
           </tbody>
         </table>
         <!-- /// table ///  -->
       </div>
-
-      
     </main>
     <script src="./js/bootstrap.bundle.min.js" class="astro-vvvwv3sm"></script>
     <script src="./js/sidebars.js" class="astro-vvvwv3sm"></script>
+
+    <script>
+      
+        if (localStorage.getItem("isSmall") === "yes") { 
+
+           sidebarId.classList.add("small-sidebar");
+        } else {
+           sidebarId.classList.remove("small-sidebar");
+        }
+     
+
+      function toggleSidebar() {
+        if (localStorage.getItem("isSmall") === "yes") {
+          localStorage.setItem("isSmall", "no");
+          sidebarId.classList.remove("small-sidebar")
+        } else {
+          localStorage.setItem("isSmall", "yes");
+            sidebarId.classList.add("small-sidebar");
+        }
+
+      
+      }
+    </script>
   </body>
 </html>
